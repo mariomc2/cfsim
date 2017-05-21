@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   
 
 	scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-		resources :projections
+		resources :projections do
+			collection do
+				post :calculate
+			end
+		end
 		root 'projections#index'
 	end
   

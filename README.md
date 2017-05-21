@@ -26,4 +26,5 @@ Things you may want to cover:
 heroku run rake db:migrate --app cashflowprojections
 
  HEROKU -- this code below will help to not pass secret key on github and allows the app to be deployed on Heroku 
+ Added to config/environments/production.rb
   config.secret_key_base = ENV["SECRET_KEY_BASE"]  

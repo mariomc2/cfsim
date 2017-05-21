@@ -1,6 +1,6 @@
 
 <h1><%=	t("projections.title")%></h1>
-<%= form_tag do %>
+<%= form_tag({:action => "calculate"}) do %>
 	
 	<div class="card card-outline-primary">
 		<div class="card-header card-inverse card-primary">
@@ -31,11 +31,11 @@
 				<tbody>
 					<tr>
 						<td><%= label_tag("num_years_spending",t("projections.num_years_spending"))%></td>
-						<td><%= number_field_tag("num_years_spending", 10, in: 1.0..50.0, step: 1) %></td>
+						<td><%= number_field_tag("num_years_spending", 15, in: 1.0..50.0, step: 1) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("monthly_spending",t("projections.monthly_spending"))%></td>
-						<td><%= number_field_tag("monthly_spending", 10000, min: 1) %></td>
+						<td><%= number_field_tag("monthly_spending", 15000, min: 1) %></td>
 					</tr>
 				</tbody>
 			</table>
