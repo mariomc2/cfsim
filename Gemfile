@@ -23,6 +23,8 @@ gem 'coffee-rails', '~> 4.2'
 # gem to chart
 gem 'chartkick'
 
+gem 'tether-rails'
+
 # Use Bootstrap 4
 gem 'bootstrap', '~> 4.0.0.alpha6'
 # Use Font Awesome
