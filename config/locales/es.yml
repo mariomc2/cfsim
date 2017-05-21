@@ -2,12 +2,14 @@
 es:
   projections:
     title: "Proyección de flujos de caja"
+    ini_saving: "Ahorros iniciales"
     num_years_saving: "Numero de años ahorrando"
     num_years_spending: "Numero de años gastando"
     monthly_saving: "Ahorro mensual"
     monthly_spending: "Gasto mensual"
     exp_ann_ret: "Retorno anual esperado"
     exp_ann_vol: "Volatilidad anual esperada"
+    num_sim: "Numero de simulaciones"
     savings_projection: "Proyección de ahorro"
     spendings_projection: "Proyección de gastos"
     inv_param: "Parametros de inversión"

@@ -1,6 +1,6 @@
 
 <h1><%=	t("projections.title")%></h1>
-<%= form_tag({:action => "calculate"}) do %>
+<%= form_tag({:action => "calculate"}, :method => :get ) do %>
 	
 	<div class="card card-outline-primary">
 		<div class="card-header card-inverse card-primary">
@@ -9,6 +9,10 @@
 	 	<div class="card-block text-primary">
 	    <table class="table">
 				<tbody>
+					<tr>
+						<td><%= label_tag("ini_saving",t("projections.ini_saving"))%></td>
+						<td><%= number_field_tag("ini_saving", 500000) %></td>
+					</tr>
 					<tr>
 						<td><%= label_tag("num_years_saving",t("projections.num_years_saving"))%></td>
 						<td><%= number_field_tag("num_years_saving", 10, in: 1.0..50.0, step: 1) %></td>
@@ -56,6 +60,10 @@
 				<tr>
 					<td><%= label_tag("exp_ann_vol",t("projections.exp_ann_vol") + " (%)")%></td>
 					<td><%= number_field_tag("exp_ann_vol", 15, min: 0) %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
+					<td><%= number_field_tag("num_sim", 10, min: 1) %></td>
 				</tr>
 				</tbody>
 			</table>

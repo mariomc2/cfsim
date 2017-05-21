@@ -22,12 +22,14 @@
 en:
   projections:
     title: "Projection of Cash Flows"
+    ini_saving: "Initial savings"
     num_years_saving: "Number of years saving"
     num_years_spending: "Number of years spending"
     monthly_saving: "Monthly saving"
     monthly_spending: "Montlhy spending"
     exp_ann_ret: "Expected annual return"
     exp_ann_vol: "Expected annual voaltility"
+    num_sim: "Number of simulations"
     savings_projection: "Savings projection"
     spendings_projection: "Spending projection"
     inv_param: "Investment parameters"
