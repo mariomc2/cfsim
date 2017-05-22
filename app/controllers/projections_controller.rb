@@ -57,7 +57,6 @@ class ProjectionsController < ApplicationController
   		@cap_acc_sim_dwn[i] = @cap_acc_sim_avg[i] - coef * @cap_acc_sim_stdv[i]
   		@cap_acc_sim_up[i] = @cap_acc_sim_avg[i] + coef * @cap_acc_sim_stdv[i]
   		@sim_arr_pos[i] = @sim_arr_pos[i] / ns
-  	end
-  		  puts @sim_arr_pos  	
+  	end	
   end
 end

@@ -12,7 +12,8 @@
   
   <div class="row">
     <%= render partial: "shared/navbar" %>
-  </div>	
+  </div>
+  <br><br><br>
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, id: "flash_#{name}" %>
