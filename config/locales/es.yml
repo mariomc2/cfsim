@@ -7,6 +7,11 @@ es:
     num_years_spending: "Numero de años gastando"
     monthly_saving: "Ahorro mensual"
     monthly_spending: "Gasto mensual"
+    rf: "Tasa libre de riesgo"
+    inv_sim: "Simulación de Inversión"
+    avg: "Promedio"
+    lmt_dwn: "Límite bajo (5%)"
+    lmt_up: "Límite alto (95%)"
     exp_ann_ret: "Retorno anual esperado"
     exp_ann_vol: "Volatilidad anual esperada"
     num_sim: "Numero de simulaciones"
@@ -14,6 +19,11 @@ es:
     spendings_projection: "Proyección de gastos"
     inv_param: "Parametros de inversión"
     submit: "Calcular"
+    saving: "Ahorro"
+    spending: "Gasto"
+    year: "Año"
+    cap_acc: "Capital Acumulado"
+    rnd_ret: "Ejemplo una observacion: Retornos aleatorios distribuidos normalmente"
   activerecord:
     errors:
       messages:

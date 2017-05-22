@@ -46,6 +46,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Distribution is a gem with several probabilistic distributions.
 gem 'distribution', '~> 0.7.3'
+gem 'average'
+gem 'standard_deviation'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

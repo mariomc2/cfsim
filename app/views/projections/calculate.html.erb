@@ -1,7 +1,88 @@
-<h1><%=	"SIMS" %></h1>
-<h2><%= @cf_arr.size%> </h2>
+<h1><%=	t("projections.title")%></h1>
 
-<%= column_chart @years_arr.zip(@cf_arr) %>
+<div class="card card-outline-secondary">
+	<div class="card-block text-secondary">
+    <table class="table table-sm table-striped">
+			<tbody>
+				<tr>
+					<td><%= label_tag("ini_saving",t("projections.ini_saving"))%></td>
+					<td><%= "$" + params[:ini_saving] %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("num_years_saving",t("projections.num_years_saving"))%></td>
+					<td><%= params[:num_years_saving] %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("monthly_saving",t("projections.monthly_saving"))%></td>
+					<td><%= "$" + params[:monthly_saving] %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("num_years_spending",t("projections.num_years_spending"))%></td>
+					<td><%= params[:num_years_spending] %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("monthly_spending",t("projections.monthly_spending"))%></td>
+					<td><%= "$" + params[:monthly_spending] %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("rf",t("projections.rf"))%></td>
+					<td><%= params[:rf] + "%" %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("exp_ann_ret",t("projections.exp_ann_ret"))%></td>
+					<td><%= params[:exp_ann_ret] + "%" %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("exp_ann_vol",t("projections.exp_ann_vol"))%></td>
+					<td><%= params[:exp_ann_vol] + "%" %></td>
+				</tr>
+				<tr>
+					<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
+					<td><%= params[:num_sim] %></td>
+				</tr>
+			</tbody>
+		</table>
+  </div>
+</div>
 
-<%= line_chart @years_arr.zip(@rand_arr), download: true %>
+<br>
+<div class="card card-outline-primary">
+	<div class="card-header card-inverse card-primary">
+    <h7><%= t("projections.saving") + "/" + t("projections.spending") %></h7>
+ 	</div>
+ 	<div class="card-block text-primary">
+    <%= column_chart [{name: t("projections.saving"), data: @years_arr.zip(@sav_arr)}, {name: t("projections.spending"), data: @years_arr.zip(@sp_arr)}], download: true, legend: "bottom", xtitle: t("projections.year")   %>
+  </div>
+</div>
 
+<br>
+<div class="card card-outline-primary">
+	<div class="card-header card-inverse card-primary">
+    <h7><%= t("projections.cap_acc") %></h7>
+ 	</div>
+ 	<div class="card-block text-primary">
+    <%= line_chart [{name: t("projections.rf"), data: @years_arr.zip(@cap_acc_rf)}, {name: t("projections.avg"), data: @years_arr.zip(@cap_acc_sim_avg)}, {name: t("projections.lmt_dwn"), data: @years_arr.zip(@cap_acc_sim_dwn)}, {name: t("projections.lmt_up"), data: @years_arr.zip(@cap_acc_sim_up)}], download: true, legend: "bottom", xtitle: t("projections.year")%>
+  </div>
+</div>
+
+<br>
+<div class="card card-outline-warning">
+	<div class="card-header card-inverse card-warning">
+    <h7><%= t("projections.rnd_ret") %></h7>
+ 	</div>
+ 	<div class="card-block text-warning">
+    <%= column_chart [{name: "Ret", data: @years_arr.zip(@rnd_ret)}], download: true, legend: "bottom", xtitle: t("projections.year") %>
+  </div>
+</div>
+
+<br>
+<div class="card card-outline-warning">
+	<div class="card-header card-inverse card-warning">
+    <h7><%= t("projections.cap_acc") %></h7>
+ 	</div>
+ 	<div class="card-block text-warning">
+    <%= line_chart [{name: t("projections.inv_sim"), data: @years_arr.zip(@cap_acc_inv)}, {name: t("projections.avg"), data: @years_arr.zip(@cap_acc_sim_avg)}, {name: t("projections.lmt_dwn"), data: @years_arr.zip(@cap_acc_sim_dwn)}, {name: t("projections.lmt_up"), data: @years_arr.zip(@cap_acc_sim_up)}], download: true, legend: "bottom", xtitle: t("projections.year")%>
+  </div>
+</div>
+
+<br>

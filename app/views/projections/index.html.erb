@@ -54,17 +54,21 @@
 	    <table class="table">
 				<tbody>
 					<tr>
-					<td><%= label_tag("exp_ann_ret",t("projections.exp_ann_ret") + " (%)")%></td>
-					<td><%= number_field_tag("exp_ann_ret", 10) %></td>
-				</tr>
-				<tr>
-					<td><%= label_tag("exp_ann_vol",t("projections.exp_ann_vol") + " (%)")%></td>
-					<td><%= number_field_tag("exp_ann_vol", 15, min: 0) %></td>
-				</tr>
-				<tr>
-					<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
-					<td><%= number_field_tag("num_sim", 10, min: 1) %></td>
-				</tr>
+						<td><%= label_tag("rf",t("projections.rf") + " (%)")%></td>
+						<td><%= number_field_tag("rf", 0) %></td>
+					</tr>
+					<tr>
+						<td><%= label_tag("exp_ann_ret",t("projections.exp_ann_ret") + " (%)")%></td>
+						<td><%= number_field_tag("exp_ann_ret", 5) %></td>
+					</tr>
+					<tr>
+						<td><%= label_tag("exp_ann_vol",t("projections.exp_ann_vol") + " (%)")%></td>
+						<td><%= number_field_tag("exp_ann_vol", 15, min: 0) %></td>
+					</tr>
+					<tr>
+						<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
+						<td><%= number_field_tag("num_sim", 10000, min: 1) %></td>
+					</tr>
 				</tbody>
 			</table>
 	  </div>
