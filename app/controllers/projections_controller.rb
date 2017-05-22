@@ -30,6 +30,7 @@ class ProjectionsController < ApplicationController
   	end
 
   	@sim_arr = Array.new(ns)
+  	@sim_arr_pos = Array.new(1 + ny_sav + ny_sp, 0.0)
 
   	for s in 0..ns-1
 	  	# generate random returns normally distributed
@@ -37,27 +38,26 @@ class ProjectionsController < ApplicationController
 	  	# generate the capital accumulation invested to the random returns
 	  	@cap_acc_inv = Array.new(1 + ny_sav + ny_sp, 0)
 	  	@cap_acc_inv[0] = @sav_arr[0] + @sp_arr[0]
+	  	@sim_arr_pos[0] = @sim_arr_pos[0] + 1
 	  	for i in 1..(ny_sav + ny_sp)
-	  		@cap_acc_inv[i] = (@cap_acc_inv[i-1] + @sav_arr[i] + @sp_arr[i]) * (1 + @rnd_ret[i]/100)
+	  		@cap_acc_inv[i] = (@cap_acc_inv[i-1] + @sav_arr[i] + @sp_arr[i]) * (1 + ((@cap_acc_inv[i-1] + @sav_arr[i] + @sp_arr[i]) > 0 ? @rnd_ret[i]/100 : 0))
+	  		@sim_arr_pos[i] = @sim_arr_pos[i] + (@cap_acc_inv[i] > 0 ? 1 : 0)
 	  	end
 	  	@sim_arr[s] = @cap_acc_inv
 	  end
 
 	  @cap_acc_sim_avg = Array.new(1 + ny_sav + ny_sp, 0)
-  	for i in 0..(ny_sav + ny_sp)
-  		@cap_acc_sim_avg[i] = @sim_arr.transpose[i].mean
-  	end
-
-  	@cap_acc_sim_stdv = Array.new(1 + ny_sav + ny_sp, 0)
+	  @cap_acc_sim_stdv = Array.new(1 + ny_sav + ny_sp, 0)
   	@cap_acc_sim_dwn = Array.new(1 + ny_sav + ny_sp, 0)
   	@cap_acc_sim_up = Array.new(1 + ny_sav + ny_sp, 0)
   	coef = 1.645
   	for i in 0..(ny_sav + ny_sp)
+  		@cap_acc_sim_avg[i] = @sim_arr.transpose[i].mean
   		@cap_acc_sim_stdv[i] = @sim_arr.transpose[i].stdev
   		@cap_acc_sim_dwn[i] = @cap_acc_sim_avg[i] - coef * @cap_acc_sim_stdv[i]
   		@cap_acc_sim_up[i] = @cap_acc_sim_avg[i] + coef * @cap_acc_sim_stdv[i]
+  		@sim_arr_pos[i] = @sim_arr_pos[i] / ns
   	end
-
-  	
+  		  puts @sim_arr_pos  	
   end
 end

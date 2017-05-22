@@ -15,6 +15,7 @@ es:
     exp_ann_ret: "Retorno anual esperado"
     exp_ann_vol: "Volatilidad anual esperada"
     num_sim: "Numero de simulaciones"
+    pr_pos: "Probabilidad de Cumplimiento"
     savings_projection: "Proyección de ahorro"
     spendings_projection: "Proyección de gastos"
     inv_param: "Parametros de inversión"

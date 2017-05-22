@@ -10,35 +10,9 @@
 
   <body>
   
-  	<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" href="#">CF Sims</a>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav navbar-right">
-          <li class="nav-item">
-            <% if I18n.locale == I18n.default_locale %>
-            	<%= link_to(image_tag('mx.png', :size => '22x16', :alt => 'mx') + " Español", {:locale=>'es'}, class: "nav-link") %>
-            <% else %>
-              <%= link_to(image_tag('gb.png', :size => '22x16', :alt => 'gb') + " English", {:locale=>'en'}, class: "nav-link") %>
-            <%end%>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  <br><br><br>
+  <div class="row">
+    <%= render partial: "shared/navbar" %>
+  </div>	
   <div class="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, id: "flash_#{name}" %>
