@@ -40,7 +40,7 @@ class ProjectionsController < ApplicationController
 	  	@cap_acc_inv[0] = @sav_arr[0] + @sp_arr[0]
 	  	@sim_arr_pos[0] = @sim_arr_pos[0] + 1
 	  	for i in 1..(ny_sav + ny_sp)
-	  		@cap_acc_inv[i] = (@cap_acc_inv[i-1] + @sav_arr[i] + @sp_arr[i]) * (1 + ((@cap_acc_inv[i-1] + @sav_arr[i] + @sp_arr[i]) > 0 ? @rnd_ret[i]/100 : 0))
+	  		@cap_acc_inv[i] = @cap_acc_inv[i-1] * (1 + (@cap_acc_inv[i-1] > 0 ? @rnd_ret[i]/100 : 0)) + @sav_arr[i] + @sp_arr[i]
 	  		@sim_arr_pos[i] = @sim_arr_pos[i] + (@cap_acc_inv[i] > 0 ? 1 : 0)
 	  	end
 	  	@sim_arr[s] = @cap_acc_inv

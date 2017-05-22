@@ -15,11 +15,11 @@
 					</tr>
 					<tr>
 						<td><%= label_tag("num_years_saving",t("projections.num_years_saving"))%></td>
-						<td><%= number_field_tag("num_years_saving", 10, in: 1.0..50.0, step: 1) %></td>
+						<td><%= number_field_tag("num_years_saving", 10, in: 0.0..50.0, step: 1) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("monthly_saving",t("projections.monthly_saving"))%></td>
-						<td><%= number_field_tag("monthly_saving", 10000, min: 1) %></td>
+						<td><%= number_field_tag("monthly_saving", 10000, min: 0) %></td>
 					</tr>
 				</tbody>
 			</table>
@@ -35,11 +35,11 @@
 				<tbody>
 					<tr>
 						<td><%= label_tag("num_years_spending",t("projections.num_years_spending"))%></td>
-						<td><%= number_field_tag("num_years_spending", 15, in: 1.0..50.0, step: 1) %></td>
+						<td><%= number_field_tag("num_years_spending", 15, in: 0.0..50.0, step: 1) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("monthly_spending",t("projections.monthly_spending"))%></td>
-						<td><%= number_field_tag("monthly_spending", 15000, min: 1) %></td>
+						<td><%= number_field_tag("monthly_spending", 15000, min: 0) %></td>
 					</tr>
 				</tbody>
 			</table>
@@ -55,15 +55,15 @@
 				<tbody>
 					<tr>
 						<td><%= label_tag("rf",t("projections.rf") + " (%)")%></td>
-						<td><%= number_field_tag("rf", 0) %></td>
+						<td><%= number_field_tag("rf", 0, step: :any) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("exp_ann_ret",t("projections.exp_ann_ret") + " (%)")%></td>
-						<td><%= number_field_tag("exp_ann_ret", 5) %></td>
+						<td><%= number_field_tag("exp_ann_ret", 5, step: :any) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("exp_ann_vol",t("projections.exp_ann_vol") + " (%)")%></td>
-						<td><%= number_field_tag("exp_ann_vol", 15, min: 0) %></td>
+						<td><%= number_field_tag("exp_ann_vol", 15, min: 0, step: :any) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
