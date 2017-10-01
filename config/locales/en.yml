@@ -45,3 +45,4 @@ en:
     year: "Year"
     cap_acc: "Capital Accumulation"
     rnd_ret: "One simulation sample: Normally distributed random returns"
+    sims: "Simulations"

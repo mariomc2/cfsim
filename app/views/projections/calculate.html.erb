@@ -76,22 +76,30 @@
 </div>
 
 <br>
-<div class="card card-outline-warning">
+<!-- <div class="card card-outline-warning">
 	<div class="card-header card-inverse card-warning">
-    <h7><%= t("projections.rnd_ret") %></h7>
+    <h7><%#= t("projections.rnd_ret") %></h7>
  	</div>
  	<div class="card-block text-warning">
-    <%= column_chart [{name: "Ret", data: @years_arr.zip(@rnd_ret)}], download: true, legend: "bottom", xtitle: t("projections.year") %>
+    <%#= column_chart [{name: "Ret", data: @years_arr.zip(@rnd_ret)}], download: true, legend: "bottom", xtitle: t("projections.year") %>
   </div>
-</div>
+</div> -->
 
 <br>
 <div class="card card-outline-warning">
 	<div class="card-header card-inverse card-warning">
-    <h7><%= t("projections.cap_acc") %></h7>
+    <h7><%= t("projections.sims") %></h7>
  	</div>
  	<div class="card-block text-warning">
-    <%= line_chart [{name: t("projections.inv_sim"), data: @years_arr.zip(@cap_acc_inv)}, {name: t("projections.avg"), data: @years_arr.zip(@cap_acc_sim_avg)}, {name: t("projections.lmt_dwn"), data: @years_arr.zip(@cap_acc_sim_dwn)}, {name: t("projections.lmt_up"), data: @years_arr.zip(@cap_acc_sim_up)}], download: true, legend: "bottom", xtitle: t("projections.year")%>
+ 		<%= line_chart @sims2chart.insert(0,
+ 										{name: t("projections.lmt_dwn"), data: @years_arr.zip(@cap_acc_sim_dwn)}).insert(0,
+ 										{name: t("projections.lmt_up"), data: @years_arr.zip(@cap_acc_sim_up)}).insert(0,
+ 										{name: t("projections.avg"), data: @years_arr.zip(@cap_acc_sim_avg)}), 
+ 										colors:["red","green", "orange"], download: true, legend: false, xtitle: t("projections.year") %>
+    <%#= line_chart [{name: t("projections.inv_sim"), data: @years_arr.zip(@sim_arr[0])},
+    								{name: t("projections.avg"), data: @years_arr.zip(@cap_acc_sim_avg)}, 
+    								{name: t("projections.lmt_dwn"), data: @years_arr.zip(@cap_acc_sim_dwn)}, 
+    								{name: t("projections.lmt_up"), data: @years_arr.zip(@cap_acc_sim_up)}], download: true, legend: "bottom", xtitle: t("projections.year") %>
   </div>
 </div>
 

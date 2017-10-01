@@ -25,6 +25,7 @@ es:
     year: "Año"
     cap_acc: "Capital Acumulado"
     rnd_ret: "Ejemplo una observacion: Retornos aleatorios distribuidos normalmente"
+    sims: "Simulaciones"
   activerecord:
     errors:
       messages:

@@ -52,11 +52,18 @@ class ProjectionsController < ApplicationController
   	@cap_acc_sim_up = Array.new(1 + ny_sav + ny_sp, 0.0)
   	coef = 1.645
   	for i in 0..(ny_sav + ny_sp)
-  		@cap_acc_sim_avg[i] = @sim_arr.transpose[i].mean
-  		@cap_acc_sim_stdv[i] = @sim_arr.transpose[i].stdev
-  		@cap_acc_sim_dwn[i] = @cap_acc_sim_avg[i] - coef * @cap_acc_sim_stdv[i]
-  		@cap_acc_sim_up[i] = @cap_acc_sim_avg[i] + coef * @cap_acc_sim_stdv[i]
+      stats = DescriptiveStatistics::Stats.new(@sim_arr.transpose[i])
+  		@cap_acc_sim_avg[i] = stats.mean
+  		@cap_acc_sim_stdv[i] = stats.standard_deviation
+  		@cap_acc_sim_dwn[i] = stats.value_from_percentile(5)#@cap_acc_sim_avg[i] - coef * @cap_acc_sim_stdv[i]
+  		@cap_acc_sim_up[i] = stats.value_from_percentile(95)#@cap_acc_sim_avg[i] + coef * @cap_acc_sim_stdv[i]
   		@sim_arr_pos[i] = @sim_arr_pos[i] / ns
-  	end	
+  	end
+
+    @sims2chart =[{name: "sim1", data: @years_arr.zip(@sim_arr[0])}]
+    for i in 1..[ns-1,19].min
+      @sims2chart=@sims2chart.insert(0,{name: "sim"+(i+1).to_s, data: @years_arr.zip(@sim_arr[i])})
+    end
+
   end
 end
