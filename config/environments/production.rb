@@ -7,6 +7,11 @@ Rails.application.configure do
   # HEROKU -- this code below will help to not pass secret key on github and allows the app to be deployed on Heroku 
   config.secret_key_base = ENV["SECRET_KEY_BASE"]  
 
+  # Allow content being loaded cross domain for Company's website 20171208
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'ALLOWALL'
+  }
+  
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
