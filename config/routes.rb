@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
-	root :to => 'access#login'
+	#root :to => 'access#login'
 
 	scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+
+		root 'projections#inputs'
 
 		resources :users, :except => [:show] do
 			member do
@@ -18,8 +20,6 @@ Rails.application.routes.draw do
 	  get 'projections/inputs'
 	  post 'projections/create'
 	  get 'projections/calculate'
-
-	  #root 'projections#inputs'
 	end
   
 
