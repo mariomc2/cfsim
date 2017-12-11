@@ -5,8 +5,8 @@ es:
     ini_saving: "Ahorros iniciales"
     num_years_saving: "Numero de años ahorrando"
     num_years_spending: "Numero de años gastando"
-    monthly_saving: "Ahorro mensual"
-    monthly_spending: "Gasto mensual"
+    yearly_saving: "Ahorro anual"
+    yearly_spending: "Gasto anual"
     rf: "Tasa libre de riesgo"
     inv_sim: "Simulación de Inversión"
     avg: "Promedio"
@@ -26,6 +26,15 @@ es:
     cap_acc: "Capital Acumulado"
     rnd_ret: "Ejemplo una observacion: Retornos aleatorios distribuidos normalmente"
     sims: "Simulaciones"
+    users: "Usuarios"
+    first_name: "Nombre"
+    last_name: "Apellido"
+    email: "e-mail"
+    username: "Usuario"
+    password: "Contraseña"
+    admin: "Administrador"
+    login: "Entrar"
+    logout: "Salir"
   activerecord:
     errors:
       messages:

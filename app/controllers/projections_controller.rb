@@ -1,26 +1,42 @@
 class ProjectionsController < ApplicationController
-  def index
+  
+  before_action :confirm_logged_in
+
+  def inputs
+  end
+
+  def create
+    session[:rf] = params[:rf]
+    session[:exp_ann_ret] = params[:exp_ann_ret]
+    session[:exp_ann_vol] = params[:exp_ann_vol]
+    session[:num_years_saving] = params[:num_years_saving]
+    session[:num_years_spending] = params[:num_years_spending]
+    session[:ini_saving] = params[:ini_saving]
+    session[:yearly_saving] = params[:yearly_saving]
+    session[:yearly_spending] = params[:yearly_spending]
+    session[:num_sim] = params[:num_sim]
+    redirect_to(projections_calculate_path) 
   end
 
   def calculate
   	# Convert Params to variables
-  	rf = params[:rf].to_f
-  	ret = params[:exp_ann_ret].to_f
-  	vol = params[:exp_ann_vol].to_f
-  	ny_sav = params[:num_years_saving].to_i
-  	ny_sp = params[:num_years_spending].to_i
-  	i_sav = params[:ini_saving].to_i
-  	m_sav = params[:monthly_saving].to_i
-  	m_sp = params[:monthly_spending].to_i
-  	ns = params[:num_sim].to_i
+  	rf = session[:rf].to_f
+  	ret = session[:exp_ann_ret].to_f
+  	vol = session[:exp_ann_vol].to_f
+  	ny_sav = session[:num_years_saving].to_i
+  	ny_sp = session[:num_years_spending].to_i
+  	i_sav = session[:ini_saving].to_f
+  	y_sav = session[:yearly_saving].to_f
+  	y_sp = session[:yearly_spending].to_f
+  	ns = session[:num_sim].to_i
   	y = Time.new.year
 
   	# generate an array with years
   	@years_arr = *(y..(y + ny_sav + ny_sp))
 
   	# generate the savings array / spending array
-  	@sav_arr = [i_sav] + Array.new(ny_sav, 12 * m_sav) + Array.new(ny_sp, 0)
-  	@sp_arr = [0] + Array.new(ny_sav, 0) + Array.new(ny_sp, - 12 * m_sp)
+  	@sav_arr = [i_sav] + Array.new(ny_sav, y_sav) + Array.new(ny_sp, 0)
+  	@sp_arr = [0] + Array.new(ny_sav, 0) + Array.new(ny_sp, - y_sp)
 
   	# generate the capital accumulation invested to the risk-free rate
   	@cap_acc_rf = Array.new(1 + ny_sav + ny_sp, 0.0)
@@ -53,10 +69,10 @@ class ProjectionsController < ApplicationController
   	coef = 1.645
   	for i in 0..(ny_sav + ny_sp)
       stats = DescriptiveStatistics::Stats.new(@sim_arr.transpose[i])
-  		@cap_acc_sim_avg[i] = stats.mean
-  		@cap_acc_sim_stdv[i] = stats.standard_deviation
-  		@cap_acc_sim_dwn[i] = stats.value_from_percentile(5)#@cap_acc_sim_avg[i] - coef * @cap_acc_sim_stdv[i]
-  		@cap_acc_sim_up[i] = stats.value_from_percentile(95)#@cap_acc_sim_avg[i] + coef * @cap_acc_sim_stdv[i]
+  		@cap_acc_sim_avg[i] = stats.mean.to_i
+  		@cap_acc_sim_stdv[i] = stats.standard_deviation.to_i
+  		@cap_acc_sim_dwn[i] = stats.value_from_percentile(5).to_i#@cap_acc_sim_avg[i] - coef * @cap_acc_sim_stdv[i]
+  		@cap_acc_sim_up[i] = stats.value_from_percentile(95).to_i#@cap_acc_sim_avg[i] + coef * @cap_acc_sim_stdv[i]
   		@sim_arr_pos[i] = @sim_arr_pos[i] / ns
   	end
 

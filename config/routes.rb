@@ -2,12 +2,23 @@ Rails.application.routes.draw do
   
 
 	scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-		resources :projections do
-			collection do
-				get :calculate
+		root 'projections#inputs'
+
+		resources :users, :except => [:show] do
+			member do
+				get :delete
 			end
 		end
-		root 'projections#index'
+				
+		get 'access/menu'
+	  get 'access/login'
+	  post 'access/attempt_login'
+	  get 'access/logout'
+
+	  get 'projections/inputs'
+	  post 'projections/create'
+	  get 'projections/calculate'
+
 	end
   
 
