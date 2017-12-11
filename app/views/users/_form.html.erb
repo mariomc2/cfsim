@@ -1,0 +1,48 @@
+<%= form_for(user) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= f.label t("projections.first_name") %></td>
+        <td><%= f.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label t("projections.last_name") %></td>
+        <td><%= f.text_field :last_name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label t("projections.email") %></td>
+        <td><%= f.text_field :email %></td>
+      </tr>
+      <tr>
+        <td><%= f.label t("projections.username") %></td>
+        <td><%= f.text_field :username %></td>
+      </tr>
+      <tr>
+        <td><%= f.label t("projections.password") %></td>
+        <td><%= f.password_field :password %></td>
+      </tr>
+      <tr>
+        <td><%= f.label t("projections.admin") %></td>
+        <td><%= f.check_box :is_admin %></td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

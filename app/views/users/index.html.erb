@@ -1,0 +1,34 @@
+<h1><%= t("projections.users")%></h1>
+
+<table class="table table-sm table-striped">
+  <thead>
+    <tr>
+      <th><%= t("projections.first_name")%></th>
+      <th><%= t("projections.last_name")%></th>
+      <th><%= t("projections.email")%></th>
+      <th><%= t("projections.username")%></th>
+      <th><%= t("projections.admin")%></th>
+      <th><%= t("projections.password")%></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.username %></td>
+        <td><%= user.is_admin %></td>
+        <td><%= user.password_digest? %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= @session_user.id == user.id ? "" : link_to('Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
