@@ -12,7 +12,9 @@ class AccessController < ApplicationController
   end
 
   def login
-  
+    if session[:user_id]
+      redirect_to(access_menu_path)
+    end
   end
 
   def attempt_login

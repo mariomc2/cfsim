@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-	#root :to => 'access#login'
+	root :to => 'projections#inputs'
 
 	scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
