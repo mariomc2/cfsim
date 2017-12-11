@@ -11,9 +11,16 @@ Rails.application.routes.draw do
 	  post 'access/attempt_login'
 	  get 'access/logout'
 
-	  get 'projections/inputs'
-	  post 'projections/create'
-	  get 'projections/calculate'
+	  # get 'projections/inputs'
+	  # post 'projections/create'
+	  # get 'projections/calculate'
+
+	  resources :projections do
+			collection do
+				get :inputs
+				get :calculate
+			end
+		end
 
 	  resources :users, :except => [:show] do
 			member do
