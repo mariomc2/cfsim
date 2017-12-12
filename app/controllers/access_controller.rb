@@ -37,6 +37,15 @@ class AccessController < ApplicationController
 
   def logout
   	session[:user_id] = nil
+    session[:rf] = nil
+    session[:exp_ann_ret] = nil
+    session[:exp_ann_vol] = nil
+    session[:num_years_saving] = nil
+    session[:num_years_spending] = nil
+    session[:ini_saving] = nil
+    session[:yearly_saving] = nil
+    session[:yearly_spending] = nil
+    session[:num_sim] = nil
     flash[:notice] = 'Logged out'
     redirect_to(access_login_path)
   end

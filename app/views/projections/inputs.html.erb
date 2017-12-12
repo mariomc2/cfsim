@@ -11,15 +11,17 @@
 				<tbody>
 					<tr>
 						<td><%= label_tag("ini_saving",t("projections.ini_saving"))%></td>
-						<td><%= number_field_tag("ini_saving", 500000, step: :any) %></td>
+						<td><%= number_field_tag("ini_saving", session[:ini_saving]?session[:ini_saving]:500000, step: :any) %>
+							
+						</td>
 					</tr>
 					<tr>
 						<td><%= label_tag("num_years_saving",t("projections.num_years_saving"))%></td>
-						<td><%= number_field_tag("num_years_saving", 10, in: 0.0..50.0, step: 1) %></td>
+						<td><%= number_field_tag("num_years_saving", session[:num_years_saving]?session[:num_years_saving]:10, in: 0.0..50.0, step: 1) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("yearly_saving",t("projections.yearly_saving"))%></td>
-						<td><%= number_field_tag("yearly_saving", 100000, min: 0, step: :any) %></td>
+						<td><%= number_field_tag("yearly_saving", session[:yearly_saving]?session[:yearly_saving]:100000, min: 0, step: :any) %></td>
 					</tr>
 				</tbody>
 			</table>
@@ -35,11 +37,11 @@
 				<tbody>
 					<tr>
 						<td><%= label_tag("num_years_spending",t("projections.num_years_spending"))%></td>
-						<td><%= number_field_tag("num_years_spending", 15, in: 0.0..50.0, step: 1) %></td>
+						<td><%= number_field_tag("num_years_spending", session[:num_years_spending]?session[:num_years_spending]:15, in: 0.0..50.0, step: 1) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("yearly_spending",t("projections.yearly_spending"))%></td>
-						<td><%= number_field_tag("yearly_spending", 150000, min: 0, step: :any) %></td>
+						<td><%= number_field_tag("yearly_spending", session[:yearly_spending]?session[:yearly_spending]:150000, min: 0, step: :any) %></td>
 					</tr>
 				</tbody>
 			</table>
@@ -55,26 +57,31 @@
 				<tbody>
 					<tr>
 						<td><%= label_tag("rf",t("projections.rf") + " (%)")%></td>
-						<td><%= number_field_tag("rf", 7.0, step: :any) %></td>
+						<td><%= number_field_tag("rf", session[:rf]?session[:rf]:7.0, step: :any) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("exp_ann_ret",t("projections.exp_ann_ret") + " (%)")%></td>
-						<td><%= number_field_tag("exp_ann_ret", 10.0, step: :any) %></td>
+						<td><%= number_field_tag("exp_ann_ret", session[:exp_ann_ret]?session[:exp_ann_ret]:10.0, step: :any) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("exp_ann_vol",t("projections.exp_ann_vol") + " (%)")%></td>
-						<td><%= number_field_tag("exp_ann_vol", 15.0, min: 0, step: :any) %></td>
+						<td><%= number_field_tag("exp_ann_vol", session[:exp_ann_vol]?session[:exp_ann_vol]:15.0, min: 0, step: :any) %></td>
 					</tr>
 					<tr>
 						<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
-						<td><%= number_field_tag("num_sim", 10000, min: 1) %></td>
+						<td><%= number_field_tag("num_sim", session[:num_sim]?session[:num_sim]:10000, min: 1) %></td>
 					</tr>
 				</tbody>
 			</table>
 	  </div>
 	</div>
-
-	<%= submit_tag(t("projections.submit", class: "btn btn-success")) %>
+	<br>
+	<div class="wrapper">
+    <span class="group-btn"> 
+      <%= button_tag(icon('calculator', t("projections.submit")), :class => "btn btn-success btn-md") %>   
+    </span>
+  </div>
+	
 <% end %>
 
 

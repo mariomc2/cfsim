@@ -35,6 +35,7 @@ es:
     admin: "Administrador"
     login: "Entrar"
     logout: "Salir"
+    welcome_back: "Bienvenido!"
   activerecord:
     errors:
       messages:
