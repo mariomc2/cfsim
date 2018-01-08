@@ -42,7 +42,7 @@ class ProjectionsController < ApplicationController
   	@cap_acc_rf = Array.new(1 + ny_sav + ny_sp, 0.0)
   	@cap_acc_rf[0] = @sav_arr[0] + @sp_arr[0]
   	for i in 1..(ny_sav + ny_sp)
-  		@cap_acc_rf[i] = (@cap_acc_rf[i-1] + @sav_arr[i] + @sp_arr[i]) * (1 + rf/100)
+  		@cap_acc_rf[i] = ((@cap_acc_rf[i-1] + @sav_arr[i] + @sp_arr[i]) * (1 + rf/100)).to_i
   	end
 
   	@sim_arr = Array.new(ns)
