@@ -6,7 +6,7 @@
 			<tbody>
 				<tr>
 					<td><%= label_tag("ini_saving",t("projections.ini_saving"))%></td>
-					<td><%= "$" + session[:ini_saving] %></td>
+					<td><%= "$ " + number_with_precision(session[:ini_saving].to_f, :precision => 0, :delimiter => ',') %></td>
 				</tr>
 				<tr>
 					<td><%= label_tag("num_years_saving",t("projections.num_years_saving"))%></td>
@@ -14,7 +14,7 @@
 				</tr>
 				<tr>
 					<td><%= label_tag("yearly_saving",t("projections.yearly_saving"))%></td>
-					<td><%= "$" + session[:yearly_saving] %></td>
+					<td><%= "$ " + number_with_precision(session[:yearly_saving].to_f, :precision => 0, :delimiter => ',') %></td>
 				</tr>
 				<tr>
 					<td><%= label_tag("num_years_spending",t("projections.num_years_spending"))%></td>
@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td><%= label_tag("yearly_spending",t("projections.yearly_spending"))%></td>
-					<td><%= "$" + session[:yearly_spending] %></td>
+					<td><%= "$ " + number_with_precision(session[:yearly_spending].to_f, :precision => 0, :delimiter => ',') %></td>
 				</tr>
 				<tr>
 					<td><%= label_tag("rf",t("projections.rf"))%></td>
@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
-					<td><%= session[:num_sim] %></td>
+					<td><%= number_with_precision(session[:num_sim].to_f, :precision => 0, :delimiter => ',') %></td>
 				</tr>
 			</tbody>
 		</table>

@@ -48,6 +48,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'distribution', '~> 0.7.3'
 gem 'descriptive-statistics'
 
+# Gem to add commas in numbers
+gem 'autonumeric-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

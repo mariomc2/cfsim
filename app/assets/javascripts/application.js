@@ -17,4 +17,5 @@
 //= require bootstrap
 //= require Chart.bundle
 //= require chartkick
+//= require autonumeric
 //= require_tree .

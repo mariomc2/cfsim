@@ -11,8 +11,8 @@
 				<tbody>
 					<tr>
 						<td><%= label_tag("ini_saving",t("projections.ini_saving"))%></td>
-						<td><%= number_field_tag("ini_saving", session[:ini_saving]?session[:ini_saving]:500000, step: :any) %>
-							
+						<td><%#= number_field_tag("ini_saving", session[:ini_saving]?session[:ini_saving]:500000, step: :any, data: {autonumeric: true} ) %>
+							<%= text_field_tag("ini_saving", session[:ini_saving]?session[:ini_saving]:500000, data: {autonumeric: {aSign: '$ ', mDec: 0, vMin: 0}} ) %>
 						</td>
 					</tr>
 					<tr>
@@ -21,7 +21,9 @@
 					</tr>
 					<tr>
 						<td><%= label_tag("yearly_saving",t("projections.yearly_saving"))%></td>
-						<td><%= number_field_tag("yearly_saving", session[:yearly_saving]?session[:yearly_saving]:100000, min: 0, step: :any) %></td>
+						<td><%#= number_field_tag("yearly_saving", session[:yearly_saving]?session[:yearly_saving]:100000, min: 0, step: :any) %>
+							<%= text_field_tag("yearly_saving", session[:yearly_saving]?session[:yearly_saving]:100000, data: {autonumeric: {aSign: '$ ', mDec: 0, vMin: 0}}) %>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -41,7 +43,9 @@
 					</tr>
 					<tr>
 						<td><%= label_tag("yearly_spending",t("projections.yearly_spending"))%></td>
-						<td><%= number_field_tag("yearly_spending", session[:yearly_spending]?session[:yearly_spending]:150000, min: 0, step: :any) %></td>
+						<td><%#= number_field_tag("yearly_spending", session[:yearly_spending]?session[:yearly_spending]:150000, min: 0, step: :any) %>
+							<%= text_field_tag("yearly_spending", session[:yearly_spending]?session[:yearly_spending]:150000, data: {autonumeric: {aSign: '$ ', mDec: 0, vMin: 0}}) %>							
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -69,7 +73,8 @@
 					</tr>
 					<tr>
 						<td><%= label_tag("num_sim",t("projections.num_sim"))%></td>
-						<td><%= number_field_tag("num_sim", session[:num_sim]?session[:num_sim]:10000, min: 1) %></td>
+						<td><%= number_field_tag("num_sim", session[:num_sim]?session[:num_sim]:10000, min: 1) %>
+						</td>
 					</tr>
 				</tbody>
 			</table>
