@@ -26,7 +26,7 @@ gem 'chartkick'
 gem 'tether-rails'
 
 # Use Bootstrap 4
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.3.1'
 # Use Font Awesome
 gem 'font-awesome-sass', '~> 4.7.0'
 
