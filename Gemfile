@@ -68,7 +68,6 @@ group :development do
 end
 
 group :production do
-  ruby '~> 2.6.0'
    gem 'pg'
    gem 'rails_12factor'
 end
