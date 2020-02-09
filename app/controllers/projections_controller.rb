@@ -1,6 +1,6 @@
 class ProjectionsController < ApplicationController
   
-  before_action :confirm_logged_in
+  #before_action :confirm_logged_in
 
   def inputs
   end
