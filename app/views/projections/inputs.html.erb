@@ -2,8 +2,8 @@
 <h1><%=	t("projections.title")%></h1>
 <%= form_tag({:action => "create"}, :method => :post ) do %>
 
-	<div class="card card-outline-primary">
-		<div class="card-header card-inverse card-primary">
+	<div class="card border-primary">
+		<div class="card-header text-white bg-primary">
 	    <h7><%= t("projections.savings_projection")%></h7>
 	 	</div>
 	 	<div class="card-block text-primary">
@@ -30,8 +30,8 @@
 	  </div>
 	</div>
 
-	<div class="card card-outline-danger">
-		<div class="card-header card-inverse card-danger">
+	<div class="card border-danger">
+		<div class="card-header text-white bg-danger">
 	    <h7><%= t("projections.spendings_projection")%></h7>
 	 	</div>
 	 	<div class="card-block text-danger">
@@ -52,8 +52,8 @@
 	  </div>
 	</div>
 
-	<div class="card card-outline-warning">
-		<div class="card-header card-inverse card-warning">
+	<div class="card border-warning">
+		<div class="card-header text-white bg-warning">
 	    <h7><%= t("projections.inv_param")%></h7>
 	 	</div>
 	 	<div class="card-block text-warning">
